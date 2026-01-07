@@ -9,6 +9,6 @@ async function pingController(req, res) {
   return res.send({
     data: response,
   });
-}
+}   
 
 module.exports = { pingController };
