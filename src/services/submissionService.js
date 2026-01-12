@@ -1,4 +1,4 @@
-class TestService {
+class SubmissionService {
   constructor() {
     // here we can inject repositoyr to servoce as we follow in express also
   }
@@ -6,6 +6,11 @@ class TestService {
   async pingCheck() {
     return "pong";
   }
+
+  async addSubmission(submission)
+  {
+    
+  }
 }
 
-module.exports = TestService ;
+module.exports = SubmissionService ;

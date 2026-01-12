@@ -1,9 +1,9 @@
-const TestService = require("./testservice");
+const SubmissionService = require("./submissionService");
 const fastifyPlugin = require('fastify-plugin')
 
 async function servicePlugin(fastify, options) {
 //   console.log(testService,fastify , "yeh bhi hai koi cheez");
-  fastify.decorate("testService", new TestService());
+  fastify.decorate("submissionService", new SubmissionService());
     // console.log(testService,fastify , "yeh hai usse agli cheez" );
 
 }
