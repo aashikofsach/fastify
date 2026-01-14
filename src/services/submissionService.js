@@ -1,3 +1,7 @@
+
+const SubmissionProducer = require("../producer/submissionQueueProducer")
+
+
 class SubmissionService {
   constructor() {
     // here we can inject repositoyr to servoce as we follow in express also
@@ -9,7 +13,8 @@ class SubmissionService {
 
   async addSubmission(submission)
   {
-    
+    const response = await SubmissionProducer(submission)
+    return response ;
   }
 }
 
