@@ -10,9 +10,16 @@ async function pingController(req, res) {
   });
 }
 
-async function submissionController(req, res) {
+//TODO : we have to add validation layer 
+async function createSubmission(req, res) {
 
-  const response = await this.testService.addSubmission(req.body)
+  const response = await this.submissionService.addSubmission(req.body) ;
+  return res.status(200).json({
+    error : {},
+    data : response,
+    success : true ,
+    message : "created submission successfully "
+  })
 }
 
-module.exports = { pingController, submissionController };
+module.exports = { pingController, createSubmission };

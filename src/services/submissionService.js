@@ -1,21 +1,31 @@
-
-const SubmissionProducer = require("../producer/submissionQueueProducer")
-
+const SubmissionProducer = require("../producer/submissionQueueProducer");
 
 class SubmissionService {
-  constructor() {
+  constructor(submissionRepository) {
     // here we can inject repositoyr to servoce as we follow in express also
+    this.submissionRepository = submissionRepository;
   }
 
   async pingCheck() {
     return "pong";
   }
 
-  async addSubmission(submission)
-  {
-    const response = await SubmissionProducer(submission)
-    return response ;
+  async addSubmission(submission) {
+    // below we are writing so as our submission also go in db
+    const submission = await this.submissionRepository.createSubmission(
+      submission
+    );
+
+    if (!submission) {
+      throw {
+        message: "Not Able to create Submission ",
+      };
+    }
+    console.log(submission);
+    // below one is adding the submisson in our queue(bullMq)
+    const response = await SubmissionProducer(submission);
+    return {queueResponse : response , submission};
   }
 }
 
-module.exports = SubmissionService ;
+module.exports = SubmissionService;
