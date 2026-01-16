@@ -13,8 +13,9 @@ async function pingController(req, res) {
 //TODO : we have to add validation layer 
 async function createSubmission(req, res) {
 
+  console.log(req.body, "yaha tak")
   const response = await this.submissionService.addSubmission(req.body) ;
-  return res.status(200).json({
+  return res.status(200).send({
     error : {},
     data : response,
     success : true ,

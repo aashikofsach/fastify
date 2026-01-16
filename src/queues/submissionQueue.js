@@ -1,5 +1,5 @@
 // import { Queue } from "bullmq";
-const Queue = require("bullmq");
+const {Queue} = require("bullmq");
 
 // import redisConnection from "../config/redisConfig.js";
 

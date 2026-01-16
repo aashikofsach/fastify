@@ -10,10 +10,10 @@ class SubmissionService {
     return "pong";
   }
 
-  async addSubmission(submission) {
+  async addSubmission(submissionPayload) {
     // below we are writing so as our submission also go in db
     const submission = await this.submissionRepository.createSubmission(
-      submission
+      submissionPayload
     );
 
     if (!submission) {
