@@ -1,6 +1,6 @@
 const fastify = require("fastify")({ logger: true }); // here we call the fastify constructor
 const app = require("./app");
-const connectToDB = require("./config/dbConfig");
+const dbConnector = require("./config/dbConfig");
 // const PORT = 3000;
 const serverConfig = require("./config/serverConfig");
 
@@ -12,7 +12,7 @@ fastify.listen({ port: serverConfig.PORT }, async (err) => {
     process.exit(1);
   }
  
- await connectToDB();
+ await dbConnector.connect();
   
   console.log(`server is running on port: ${serverConfig.PORT}`);
 });
