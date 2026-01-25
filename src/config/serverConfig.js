@@ -8,4 +8,5 @@ module.exports = {
   ATLAS_DB_URL : process.env.ATLAS_DB_URL,
   REDIS_PORT: process.env.REDIS_PORT,
   REDIS_HOST: process.env.REDIS_HOST,
+  PROBLEM_ADMIN_SERVICE_URL: process.env.PROBLEM_ADMIN_SERVICE_URL
 };
