@@ -1,16 +1,16 @@
 
 const axiosInstance = require("../config/axiosInstance");
-const {PROBLEM_ADMIN_SERVICE_URL, PROBLEM_ADMIN_SERVICE_URL} = require("../config/serverConfig");
+const {PROBLEM_ADMIN_SERVICE_URL} = require("../config/serverConfig");
 
-const PROBLEM_ADMIN_SERVICE_URL=`${PROBLEM_ADMIN_SERVICE_URL}/api/v1`
+const PROBLEM_ADMIN_SERVICE_URL1=`${PROBLEM_ADMIN_SERVICE_URL}/api/v1`
 
 async function fetchProblemDetails(problemId){
 
     try {
-        const uri = PROBLEM_ADMIN_SERVICE_URL + `/problems/${problemId}`
+        const uri = PROBLEM_ADMIN_SERVICE_URL1 + `/problems/${problemId}`
         const response = await axiosInstance.get(uri) ;
-        console.log("Api response : ", response);
-        return response ;
+        console.log("Api response : ", response.data);
+        return response.data ;
         
     } catch (error) {
         console.log("Something went wrong while fetching problem details") ;
