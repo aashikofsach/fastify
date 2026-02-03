@@ -15,6 +15,7 @@ class SubmissionService {
     // here we have to make hit to problem admin service to have rhe problems details
 
     const problemId = submissionPayload.problemId;
+    const userId = submissionPayload.userId;
 
     const problemAdminApiResponse = await fetchProblemDetails(problemId);
 
@@ -67,6 +68,8 @@ class SubmissionService {
         language: submission.language,
         inputCase: problemAdminApiResponse.data.testCases[0].input,
         outputCase: problemAdminApiResponse.data.testCases[0].output,
+        userId,
+        submissionId : submission._id
       },
     });
     return { queueResponse: response, submission };

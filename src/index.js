@@ -3,6 +3,7 @@ const app = require("./app");
 const dbConnector = require("./config/dbConfig");
 // const PORT = 3000;
 const serverConfig = require("./config/serverConfig");
+const evaluationWorker = require("./workers/evaluationWorker");
 
 fastify.register(app);
 
@@ -13,6 +14,7 @@ fastify.listen({ port: serverConfig.PORT }, async (err) => {
   }
  
  await dbConnector.connect();
+ evaluationWorker("EvaluationQueue")
   
   console.log(`server is running on port: ${serverConfig.PORT}`);
 });
