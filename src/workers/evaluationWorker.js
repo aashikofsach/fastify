@@ -1,12 +1,22 @@
 const {Worker} = require("bullmq");
 
-// import redisConnection from "../config/redisConfig.js";
 const redisConnection = require("../config/redisConfig.js");
+const axios = require("axios");
 
 function evaluationWorker(queue) {
   new Worker(queue, async (job) => {
     if (job.name === "EvaluationJob") {
-      console.log(job);
+  try {
+      const response =  axios.post("http://localhost:3002/sendPayload", {
+        userId : job.data.userId,
+        payload : job.data
+      })
+      console.log(response, "getting response from after /sendPayload")
+      console.log(job.data);
+    
+  } catch (error) {
+    console.log(error, "Buddha ji")
+  }
     }
   },{connection : redisConnection});
 }
